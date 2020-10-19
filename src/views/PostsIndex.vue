@@ -5,7 +5,7 @@
     <div v-for="post in posts">
       <h3>Title: {{post.title}}</h3>
       <p>Message: {{post.body}}</p>
-      <img src="post.image" alt=""> <br>
+      <img :src="post.image" alt=""> <br>
       <router-link :to="`/posts/${post.id}`">More Info</router-link>
     </div>
 

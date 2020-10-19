@@ -3,7 +3,7 @@
 
       <h3>Title: {{post.title}}</h3>
       <p>Message: {{post.body}}</p>
-      <img src="post.image" alt=""> <br>
+      <img :src="post.image" alt=""> <br>
       <router-link :to="`/posts/${post.id}/edit`">Edit</router-link> |
       <router-link to="/posts">Posts</router-link>
 
