@@ -1,11 +1,11 @@
 <template>
   <div class="home">
 
+     <h2>Posts</h2>
     <div v-for="post in posts">
-      <h2>Posts</h2>
       <h3>Title: {{post.title}}</h3>
-      <img src="post.image" alt="">
       <p>Message: {{post.body}}</p>
+      <img src="post.image" alt=""> <br>
 
     </div>
 
