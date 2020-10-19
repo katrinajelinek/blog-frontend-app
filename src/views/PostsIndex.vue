@@ -1,12 +1,17 @@
 <template>
   <div class="home">
-
-     <h2>Posts</h2>
-    <div v-for="post in posts">
-      <h3>Title: {{post.title}}</h3>
-      <p>Message: {{post.body}}</p>
-      <img :src="post.image" alt=""> <br>
-      <router-link :to="`/posts/${post.id}`">More Info</router-link>
+    <h1>Posts</h1> <br>
+    <div class="card-columns">
+      <div class="card" v-for="post in posts">
+        <router-link :to="`/posts/${post.id}`">
+        <img :src="post.image" class="card-img-top" alt="">
+        </router-link>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.body}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
     </div>
 
   </div>
