@@ -1,10 +1,14 @@
 <template>
   <div class="posts-show">
 
+      <div v-if="$parent.isLoggedIn()" >You are logged in</div>
+
       <h3>Title: {{post.title}}</h3>
       <p>Message: {{post.body}}</p>
       <img :src="post.image" alt=""> <br>
-      <router-link :to="`/posts/${post.id}/edit`">Edit</router-link> |
+      <div v-if="$parent.getUserId() == post.user_id" :to="`/posts/${post.id}/edit`">
+       <router-link :to="`/posts/${post.id}/edit`">Edit</router-link> |
+      </div>
       <router-link to="/posts">Posts</router-link>
 
   </div>

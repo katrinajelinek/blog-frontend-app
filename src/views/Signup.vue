@@ -41,6 +41,7 @@ export default {
       password: "",
       passwordConfirmation: "",
       errors: [],
+      flashMessage: "",
     };
   },
   methods: {
@@ -54,6 +55,7 @@ export default {
       axios
         .post("/api/users", params)
         .then((response) => {
+          this.$parent.flashMessage = "Account created!";
           this.$router.push("/login");
         })
         .catch((error) => {

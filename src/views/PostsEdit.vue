@@ -49,6 +49,7 @@ export default {
       axios
         .patch(`/api/posts/${this.post.id}`, params)
         .then((response) => {
+          
           this.$router.push(`/posts/${this.post.id}`);
         })
         .catch((error) => {

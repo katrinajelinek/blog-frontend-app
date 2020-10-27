@@ -18,17 +18,23 @@
             <router-link class="nav-link" to="/posts/new">New Post</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/signup">Signup</router-link>
+            <router-link class="nav-link" v-if="!isLoggedIn()" to="/signup">Signup</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/login">Login</router-link>
+            <router-link class="nav-link" v-if="!isLoggedIn()" to="/login">Login</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/logout">Logout</router-link>
+            <router-link class="nav-link" v-if="isLoggedIn()" to="/logout">Logout</router-link>
           </li>
         </ul>
       </div>
     </nav>
+    <div v-if="flashMessage" class="alert alert-success fade show"       role="alert">
+      {{flashMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div class='container'>
       <router-view/>
     </div>
@@ -59,3 +65,23 @@
   color: #42b983;
 }
 </style>
+
+<script>
+
+export default {
+  data: function() {
+    return {
+      flashMessage: ""
+    };
+  },
+
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+    getUserId: function () {
+      return localStorage.getItem("user_id");
+    },
+  }
+};
+</script>

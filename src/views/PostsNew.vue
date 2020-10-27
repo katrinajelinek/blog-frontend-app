@@ -1,5 +1,8 @@
 <template>
+  
+
   <div class="posts-new">
+    <img v-if="status" :src="`https://http.cat/${status}`" alt="">
     <form v-on:submit.prevent="createPost()">
       <h1>New Post</h1>
       <ul>
@@ -12,6 +15,7 @@
       <div class="form-group">
         <label>Body:</label>
         <input type="text" class="form-control" v-model="body" />
+        <small v-if="body.length > 300" class="text-danger">Characters remaining: {{500 - body.length}}</small>
       </div>
       <div class="form-group">
         <label>Image:</label>
@@ -32,6 +36,7 @@ export default {
       body: "",
       image: "",
       errors: [],
+      status: "",
     };
   },
   methods: {
@@ -46,8 +51,9 @@ export default {
         .then((response) => {
           this.$router.push("/posts");
         })
-        .catch((error) => {
+        .catch(error => {
           this.errors = error.response.data.errors;
+          this.status = error.response.status;
         });
     },
   },
